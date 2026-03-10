@@ -6,7 +6,7 @@ class Category
 {
     string name;
     int points;
-    Question[] questions;
+    List<Question> questions;
     bool is_finished;
     bool is_active;
 
