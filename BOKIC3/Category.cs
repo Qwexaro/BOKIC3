@@ -34,16 +34,16 @@ partial class Category
     bool is_active;
 
 
-    void showInfo()
+    public void showInfo()
     {
         Console.WriteLine(name);
         Console.WriteLine(questions.Count + " Вопросов");
     }
 
-    void LoadFromFile(string filename)
+    public void LoadFromFile(string filename)
     {
 
-        foreach (string line in File.ReadAllLines($"{filename}.txt"))
+        foreach (string line in File.ReadAllLines($"data/{filename}.txt"))
         {
             string[] parts = line.Split(':');
             if (parts.Length != 3) continue; // защита от ошибок
@@ -52,12 +52,12 @@ partial class Category
         }
     }
 
-    void SaveInFile()
+    public void SaveInFile()
     {
         foreach (Question question in questions)
         {
             
-            if (File.ReadAllLines($"{name}.txt").Contains(question.content)) {
+            if (File.ReadAllLines($"data/{name}.txt").Contains(question.content)) {
                 string[] f = File.ReadAllLines($"{name}.txt");
                 for (int i = 0; i < f.Length; i++) {
                     if (f[i].Contains(question.content))
@@ -65,17 +65,34 @@ partial class Category
                         f[i] = question.content + ":" + question.answer + ":" + question.point;
                         break;
                     }
-                    File.WriteAllText($"{name}.txt", "");
-                    File.WriteAllLines($"{name}.txt", f);
+                    File.WriteAllText($"data/{name}.txt", "");
+                    File.WriteAllLines($"data/{name}.txt", f);
                 }
             }
             else
             {
                 string[] a = { question.content + ":" + question.answer + ":" + question.point};
-                File.WriteAllLines($"{name}.txt", a);
+                File.WriteAllLines($"data/{name}.txt", a);
             }
         }
     }
 
+    public void checkAnswers()
+    {
+        points = 0;
+        int completed = 0;
+        foreach (Question question in questions)
+        {
+            if (question.correct) points += question.point;
+            if (question.is_resolved) completed++;
+        }
+        Console.WriteLine("Points gained: " + points);
+        Console.WriteLine("Questions finished: " + completed);
+        if (completed == questions.Count)
+        {
+            is_finished = true;
+            Console.WriteLine($"Category {name} is done");
+        }
+    }
 }
 
