@@ -4,11 +4,11 @@ using System.Text;
 
 public partial class Category
 {
-    string name;
-    int points;
-    List<Question> questions;
-    bool is_finished;
-    bool is_active;
+    public string name;
+    public int points;
+    public List<Question> questions;
+    public bool is_finished;
+    public bool is_active;
 
     public Category(string name)
     {
