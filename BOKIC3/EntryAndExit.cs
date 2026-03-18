@@ -11,7 +11,7 @@ public class EntryAndExit
         foreach (string line in File.ReadAllLines("users.txt"))
         {
             string[] parts = line.Split(':');
-            if (parts.Length != 3) continue; // защита от ошибок
+            if (parts.Length != 3) continue;
 
             users.Add(new User
             {
@@ -45,7 +45,6 @@ public class EntryAndExit
         return null;
     }
 
-    // ========================== Функция запуска программы ==========================
     public static void RunApp()
     {
         while (true)
@@ -54,7 +53,7 @@ public class EntryAndExit
             User currentUser = Login(users);
 
             if (currentUser == null)
-                continue; // если логин/пароль неверные → возвращаемся на логин
+                continue;
 
             string result;
 

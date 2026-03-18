@@ -45,11 +45,30 @@ public class Menu
                         if (confirm == ConsoleKey.Y || confirm == ConsoleKey.Enter)
                             return selected;
                     }
-                    else
+
+                    else if (selected.Equals("Add_category", StringComparison.OrdinalIgnoreCase))
                     {
-                        Console.Clear();
-                        Console.WriteLine($"Selected: {selected}");
-                        Console.ReadKey();
+                        //AddCategory
+                    }
+                    else if (selected.Equals("Change_category", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //ChangeCategory
+                    }
+                    else if (selected.Equals("Delete_category", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //DeleteCategory
+                    }
+                    else if (selected.Equals("Save_category", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //SaveCategory
+                    }
+                    else if (selected.Equals("Load_category", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //LoadCategory
+                    }
+                    else if (selected.Equals("Choose_category", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //ChooseCategory
                     }
 
                     break;
@@ -57,12 +76,13 @@ public class Menu
         }
     }
 
+
     public static string UserMenu()
     {
         List<string> menu = new List<string>()
         {
-            "Profile",
-            "Settings",
+            "Choose_category",
+            "Load_category",
             "logout",
             "Exit"
         };
@@ -74,9 +94,11 @@ public class Menu
     {
         List<string> menu = new List<string>()
         {
-            "Users list",
-            "Add user",
-            "Delete user",
+            "Add_category",
+            "Change_category",
+            "Delete_category",
+            "Save_category",
+            "Load_category",
             "logout",
             "Exit"
         };
