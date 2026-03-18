@@ -33,7 +33,22 @@ partial class Category
     bool is_finished;
     bool is_active;
 
-
+    public Category(string name)
+    {
+        this.name = name;
+        points = 0;
+        questions = new List<Question>();
+        is_finished = false;
+        is_active = false;
+    }
+    public Category(string name, List<Question> questions)
+    {
+        this.name = name;
+        points = 0;
+        this.questions = questions;
+        is_finished = false;
+        is_active = false;
+    }
     public void showInfo()
     {
         Console.WriteLine(name);
