@@ -86,5 +86,6 @@ public partial class Category
             Console.WriteLine($"Category {name} is done");
         }
     }
+    
 }
 
