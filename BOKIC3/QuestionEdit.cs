@@ -10,21 +10,15 @@ public partial class Question
         {
             case 1:
                 Console.WriteLine("Введите новый вопрос: ");
-
                 content = Console.ReadLine().Trim();
-
                 break;
             case 2:
                 Console.WriteLine("Введите новый ответ: ");
-
                 answer = Console.ReadLine().Trim();
-
                 break;
             case 3:
                 Console.WriteLine("Введите новые очки: ");
-
                 point = int.Parse(Console.ReadLine().Trim());
-
                 break;
         }
     }

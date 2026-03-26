@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 
 public partial class Question
 {
@@ -25,6 +22,4 @@ public partial class Question
         is_resolved = false;
         this.point = point;
     }
-    
 }
-

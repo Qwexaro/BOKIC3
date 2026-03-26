@@ -11,7 +11,6 @@ public class Menu
         while (true)
         {
             Console.Clear();
-
             for (int i = 0; i < menu.Count; i++)
             {
                 if (i == position)
@@ -27,11 +26,9 @@ public class Menu
                 case ConsoleKey.UpArrow:
                     position = (position == 0) ? menu.Count - 1 : position - 1;
                     break;
-
                 case ConsoleKey.DownArrow:
                     position = (position == menu.Count - 1) ? 0 : position + 1;
                     break;
-
                 case ConsoleKey.Enter:
                     string selected = menu[position];
 
@@ -41,41 +38,41 @@ public class Menu
                         Console.Clear();
                         Console.WriteLine($"Confirm {selected}? (Y/N)");
                         var confirm = Console.ReadKey(true).Key;
-
                         if (confirm == ConsoleKey.Y || confirm == ConsoleKey.Enter)
                             return selected;
                     }
-
-                    else if (selected.Equals("Add_category", StringComparison.OrdinalIgnoreCase))
+                    else
                     {
-                        //AddCategory
+                        // Вызов соответствующих методов из Program
+                        switch (selected)
+                        {
+                            case "Add_category":
+                                Program.AddCategory();
+                                break;
+                            case "Change_category":
+                                Program.EditCategory();
+                                break;
+                            case "Delete_category":
+                                Program.RemoveCategory();
+                                break;
+                            case "Save_category":
+                                Program.SaveAllCategories();
+                                break;
+                            case "Load_category":
+                                Program.LoadAllCategories();
+                                break;
+                            case "Choose_category":
+                                Program.SelectCategory();
+                                break;
+                        }
+                        // После выполнения метода ждём нажатия клавиши, чтобы вернуться в меню
+                        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                        Console.ReadKey();
                     }
-                    else if (selected.Equals("Change_category", StringComparison.OrdinalIgnoreCase))
-                    {
-                        //ChangeCategory
-                    }
-                    else if (selected.Equals("Delete_category", StringComparison.OrdinalIgnoreCase))
-                    {
-                        //DeleteCategory
-                    }
-                    else if (selected.Equals("Save_category", StringComparison.OrdinalIgnoreCase))
-                    {
-                        //SaveCategory
-                    }
-                    else if (selected.Equals("Load_category", StringComparison.OrdinalIgnoreCase))
-                    {
-                        //LoadCategory
-                    }
-                    else if (selected.Equals("Choose_category", StringComparison.OrdinalIgnoreCase))
-                    {
-                        //ChooseCategory
-                    }
-
                     break;
             }
         }
     }
-
 
     public static string UserMenu()
     {
@@ -86,7 +83,6 @@ public class Menu
             "logout",
             "Exit"
         };
-
         return RunMenu(menu);
     }
 
@@ -102,7 +98,6 @@ public class Menu
             "logout",
             "Exit"
         };
-
         return RunMenu(menu);
     }
 }

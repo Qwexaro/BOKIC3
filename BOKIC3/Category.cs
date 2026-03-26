@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
 
 public partial class Category
 {
@@ -18,6 +18,7 @@ public partial class Category
         is_finished = false;
         is_active = false;
     }
+
     public Category(string name, List<Question> questions)
     {
         this.name = name;
@@ -26,6 +27,7 @@ public partial class Category
         is_finished = false;
         is_active = false;
     }
+
     public void showInfo()
     {
         Console.WriteLine(name);
@@ -34,11 +36,13 @@ public partial class Category
 
     public void LoadFromFile(string filename)
     {
+        string path = $"data/{filename}.txt";
+        if (!File.Exists(path)) return;
 
-        foreach (string line in File.ReadAllLines($"data/{filename}.txt"))
+        foreach (string line in File.ReadAllLines(path))
         {
             string[] parts = line.Split(':');
-            if (parts.Length != 3) continue; // защита от ошибок
+            if (parts.Length != 3) continue;
 
             questions.Add(new Question(parts[0], parts[1], int.Parse(parts[2])));
         }
@@ -46,27 +50,13 @@ public partial class Category
 
     public void SaveInFile()
     {
-        foreach (Question question in questions)
+        string path = $"data/{name}.txt";
+        List<string> lines = new List<string>();
+        foreach (Question q in questions)
         {
-            
-            if (File.ReadAllLines($"data/{name}.txt").Contains(question.content)) {
-                string[] f = File.ReadAllLines($"{name}.txt");
-                for (int i = 0; i < f.Length; i++) {
-                    if (f[i].Contains(question.content))
-                    {
-                        f[i] = question.content + ":" + question.answer + ":" + question.point;
-                        break;
-                    }
-                    File.WriteAllText($"data/{name}.txt", "");
-                    File.WriteAllLines($"data/{name}.txt", f);
-                }
-            }
-            else
-            {
-                string[] a = { question.content + ":" + question.answer + ":" + question.point};
-                File.WriteAllLines($"data/{name}.txt", a);
-            }
+            lines.Add($"{q.content}:{q.answer}:{q.point}");
         }
+        File.WriteAllLines(path, lines);
     }
 
     public void checkAnswers()
@@ -86,6 +76,4 @@ public partial class Category
             Console.WriteLine($"Category {name} is done");
         }
     }
-    
 }
-

@@ -30,8 +30,8 @@ public partial class Program
         }
 
         Console.Write("Выберите номер темы (0 - выход): ");
-        int choice = int.Parse(Console.ReadLine().Trim());
-        if (choice < 1 || choice > categories.Count) return;
+        if (!int.TryParse(Console.ReadLine().Trim(), out int choice) || choice < 1 || choice > categories.Count)
+            return;
 
         PlayCategory(categories[choice - 1]);
     }
@@ -79,6 +79,7 @@ public partial class Program
 
         category.checkAnswers();
         SaveResults(category);
+        category.SaveInFile(); // сохраняем результаты
     }
 
     public static void SaveResults(Category category)
