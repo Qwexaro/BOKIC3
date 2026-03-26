@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;   // если хотите оставить Find, но Any заменён на цикл
 
 public partial class Program
 {
@@ -14,7 +13,7 @@ public partial class Program
             return;
         }
 
-        // Проверка на существование категории без LINQ
+        // Проверка на существование категории
         bool exists = false;
         foreach (var c in categories)
         {
@@ -32,8 +31,30 @@ public partial class Program
 
         Category newCat = new Category(name);
         categories.Add(newCat);
-        newCat.SaveInFile();
-        Console.WriteLine($"Категория '{name}' добавлена.");
+        Console.WriteLine($"Категория '{name}' создана.");
+
+        // Предложение добавить вопросы
+        Console.Write("Добавить вопросы в категорию? (Y/N): ");
+        if (Console.ReadKey(true).Key == ConsoleKey.Y)
+        {
+            bool adding = true;
+            while (adding)
+            {
+                Console.WriteLine("\n--- Добавление вопроса ---");
+                newCat.AddQuestion(); // используем существующий метод
+
+                Console.Write("Добавить ещё вопрос? (Y/N): ");
+                adding = (Console.ReadKey(true).Key == ConsoleKey.Y);
+            }
+            Console.WriteLine("Добавление вопросов завершено.");
+        }
+        else
+        {
+            Console.WriteLine("Категория создана без вопросов.");
+        }
+
+        newCat.SaveInFile(); // сохраняем категорию (с вопросами или без)
+        Console.WriteLine($"Категория '{name}' сохранена.");
     }
 
     public static void EditCategory()
@@ -101,4 +122,4 @@ public partial class Program
         categories = CategoryLoader.LoadAllCategories();
         Console.WriteLine("Категории перезагружены из файлов.");
     }
-}   
+}
