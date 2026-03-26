@@ -109,6 +109,7 @@ public partial class Program
 
     public static void SaveAllCategories()
     {
+
         if (categories == null || categories.Count == 0)
         {
             Console.WriteLine("Нет категорий для сохранения.");
