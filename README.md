@@ -4,7 +4,7 @@
     <strong>Программа для прохождения тестирования.</strong>
   </p>
   <p>
-    <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version 1.0.0"/>
+    <img src="https://img.shields.io/badge/version-0.0.8-blue.svg" alt="Version 0.0.8"/>
     <img src="https://img.shields.io/badge/platform-Windows-lightgrey.svg" alt="Platform Windows"/>
     <img src="https://img.shields.io/badge/.NET-10.0-purple.svg" alt=".NET 10.0"/>
   </p>
