@@ -44,16 +44,17 @@ public static class CategoryStorageManager
             {
                 category.SaveInFile();
                 saved++;
-                Console.WriteLine($"✓ Сохранена: {category.name}");
+                Console.WriteLine($"[ОК] {category.name}");
             }
             catch (Exception ex)
             {
                 failed++;
-                Console.WriteLine($"✗ Ошибка сохранения {category.name}: {ex.Message}");
+                Console.WriteLine($"[ОШИБКА] {category.name}: {ex.Message}");
             }
         }
 
-        Console.WriteLine($"\nРезультат: сохранено {saved}, ошибок {failed}");
+        Console.WriteLine($"\nКатегорий сохранено: {saved} из {categories.Count}");
+        if (failed > 0) Console.WriteLine($"Ошибок: {failed}");
         Console.ReadKey();
     }
 

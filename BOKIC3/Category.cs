@@ -63,17 +63,18 @@ public partial class Category
     {
         points = 0;
         int completed = 0;
+        bool allCorrect = true;
         foreach (Question question in questions)
         {
             if (question.correct) points += question.point;
             if (question.is_resolved) completed++;
+            if (!question.correct) allCorrect = false;
         }
-        Console.WriteLine("Points gained: " + points);
-        Console.WriteLine("Questions finished: " + completed);
-        if (completed == questions.Count)
-        {
-            is_finished = true;
-            Console.WriteLine($"Category {name} is done");
-        }
+        Console.WriteLine("Набрано очков: " + points);
+        Console.WriteLine("Вопросов завершено: " + completed);
+        // Категория считается пройденной, только если все вопросы правильно отвечены
+        is_finished = allCorrect && (completed == questions.Count);
+        if (is_finished)
+            Console.WriteLine($"Категория '{name}' пройдена на 100%!");
     }
 }

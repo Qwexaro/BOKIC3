@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Menu
 {
-    public static string RunMenu(List<string> menu)
+    public static string RunMenu(List<string> menu, string title)
     {
         int position = 0;
         ConsoleKey key;
@@ -11,6 +11,8 @@ public class Menu
         while (true)
         {
             Console.Clear();
+            // Выводим заголовок в рамке
+            Console.WriteLine($"=== {title} ===\n");
             for (int i = 0; i < menu.Count; i++)
             {
                 if (i == position)
@@ -32,40 +34,44 @@ public class Menu
                 case ConsoleKey.Enter:
                     string selected = menu[position];
 
-                    if (selected.Equals("logout", StringComparison.OrdinalIgnoreCase) ||
-                        selected.Equals("Exit", StringComparison.OrdinalIgnoreCase))
+                    if (selected.Equals("Выйти из аккаунта", StringComparison.OrdinalIgnoreCase) ||
+                        selected.Equals("Выход", StringComparison.OrdinalIgnoreCase))
                     {
                         Console.Clear();
-                        Console.WriteLine($"Confirm {selected}? (Y/N)");
+                        Console.WriteLine($"Подтвердите {selected}? (Y/N)");
                         var confirm = Console.ReadKey(true).Key;
                         if (confirm == ConsoleKey.Y || confirm == ConsoleKey.Enter)
                             return selected;
                     }
                     else
                     {
-                        // Вызов соответствующих методов из Program
                         switch (selected)
                         {
-                            case "Add_category":
+                            case "Добавить категорию":
                                 Program.AddCategory();
                                 break;
-                            case "Change_category":
+                            case "Изменить категорию":
                                 Program.EditCategory();
                                 break;
-                            case "Delete_category":
+                            case "Удалить категорию":
                                 Program.RemoveCategory();
                                 break;
-                            case "Save_category":
+                            case "Сохранить категории":
                                 Program.SaveAllCategories();
                                 break;
-                            case "Load_category":
+                            case "Загрузить категории":
                                 Program.LoadAllCategories();
                                 break;
-                            case "Choose_category":
+                            case "Выбрать категорию":
                                 Program.SelectCategory();
                                 break;
+                            case "Мои результаты":
+                                Program.ShowUserResults();
+                                break;
+                            case "Сбросить результаты":
+                                Program.ResetUserResults();
+                                break;
                         }
-                        // После выполнения метода ждём нажатия клавиши, чтобы вернуться в меню
                         Console.WriteLine("\nНажмите любую клавишу для продолжения...");
                         Console.ReadKey();
                     }
@@ -77,27 +83,29 @@ public class Menu
     public static string UserMenu()
     {
         List<string> menu = new List<string>()
-        {
-            "Choose_category",
-            "Load_category",
-            "logout",
-            "Exit"
-        };
-        return RunMenu(menu);
+    {
+        "Выбрать категорию",
+        "Загрузить категории",
+        "Мои результаты",
+        "Сбросить результаты",  // новый пункт
+        "Выйти из аккаунта",
+        "Выход"
+    };
+        return RunMenu(menu, "Меню пользователя");
     }
 
     public static string AdminMenu()
     {
         List<string> menu = new List<string>()
-        {
-            "Add_category",
-            "Change_category",
-            "Delete_category",
-            "Save_category",
-            "Load_category",
-            "logout",
-            "Exit"
-        };
-        return RunMenu(menu);
+    {
+        "Добавить категорию",
+        "Изменить категорию",
+        "Удалить категорию",
+        "Сохранить категории",
+        "Загрузить категории",
+        "Выйти из аккаунта",
+        "Выход"
+    };
+        return RunMenu(menu, "Меню администратора");
     }
 }
