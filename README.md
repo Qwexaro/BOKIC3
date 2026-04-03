@@ -38,7 +38,7 @@
 2. **Разархивируй** архив `BOKIC3.zip`
 3. **Запусти** `BOKIC3.exe`.
 
-`Linux` (сборка)
+`Linux (distributive)`
 
 1. **Скачай** архив `BOKIC3-Linux.zip` по ссылке выше
 2. **Разархивируй** `BOKIC3-Linux.zip`
