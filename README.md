@@ -4,7 +4,7 @@
     <strong>Программа для прохождения тестирования.</strong>
   </p>
   <p>
-    <img src="https://img.shields.io/badge/version-0.0.8-blue.svg" alt="Version 0.0.8"/>
+    <img src="https://img.shields.io/badge/version-0.1.0-blue.svg" alt="Version 0.1.0"/>
     <img src="https://img.shields.io/badge/platform-Windows-lightgrey.svg" alt="Platform Windows"/>
     <img src="https://img.shields.io/badge/.NET-10.0-purple.svg" alt=".NET 10.0"/>
   </p>
@@ -19,7 +19,7 @@
 
 Ты можешь скачать готовую версию программы здесь:
 
-👉 **[Скачать последнюю версию (v0.0.8)](https://github.com/Qwexaro/BOKIC3/releases/tag/1.0.0)** 👈
+👉 **[Скачать последнюю версию (v0.1.0)](https://github.com/Qwexaro/BOKIC3/releases/tag/0.1.0)** 👈
 
 *Прямая ссылка на архив с проектом*
 
@@ -34,11 +34,12 @@
 
 Запустить программу очень просто. Достаточно выполнить два шага:
 
-1. **Скачай** архив `BOKIC3-0.0.8.zip` по ссылке выше.
-2. **Разархивируй** архив `BOKIC3-0.0.8.zip`
-3. **Перейди** в директорию `BOKIC3-0.0.8\BOKIC3\bin\Debug\net10.0`
-4. **Запусти** `BOKIC3.exe`.
+`Windows`
+
+1. **Скачай** архив `BOKIC3.zip` по ссылке выше.
+2. **Разархивируй** архив `BOKIC3.zip`
+3. **Запусти** `BOKIC3.exe`.
 
 ## 👾 Эксплуатация
 
-Заранее предоставлена учетка **user** с паролем: 1234 и учетка администратора **admin** ||пароль засекречен||
+Заранее предоставлена учетка **user** с паролем: 1234 и **admin** с паролепем: 1234
