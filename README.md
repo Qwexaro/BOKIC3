@@ -5,7 +5,7 @@
   </p>
   <p>
     <img src="https://img.shields.io/badge/version-0.1.0-blue.svg" alt="Version 0.1.0"/>
-    <img src="https://img.shields.io/badge/platforms:-Windows,Linux(distibutives)-orange.svg)" alt="Platforms: Windows, Linux(distibutives)"/>
+    <img src="https://img.shields.io/badge/platforms:-Windows,%20Linux%20(distibutive)-orange.svg)" alt="Platforms: Windows, Linux(distibutives)"/>
     <img src="https://img.shields.io/badge/.NET-10.0-purple.svg" alt=".NET 10.0"/>
   </p>
 </div>
