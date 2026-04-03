@@ -17,6 +17,12 @@ public static class CategoryLoader
             return categories;
         }
 
+        Console.Clear();
+        Console.WriteLine("=== Загрузка категорий ===\n");
+
+        int loaded = 0;
+        int errors = 0;
+
         foreach (string filePath in categoryFiles)
         {
             string categoryName = Path.GetFileNameWithoutExtension(filePath);
@@ -24,21 +30,22 @@ public static class CategoryLoader
             try
             {
                 category.LoadFromFile(categoryName);
-                if (category.questions.Count > 0)
-                {
-                    categories.Add(category);
-                    Console.WriteLine($"✓ Загружена категория: {categoryName} ({category.questions.Count} вопросов)");
-                }
-                else
-                {
-                    Console.WriteLine($"⚠ Категория {categoryName} не содержит вопросов и пропущена");
-                }
+                // Загружаем даже если вопросов 0
+                categories.Add(category);
+                loaded++;
+                Console.WriteLine($"[ОК] {categoryName} ({category.questions.Count} вопросов)");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"✗ Ошибка загрузки категории {categoryName}: {ex.Message}");
+                errors++;
+                Console.WriteLine($"[ОШИБКА] {categoryName}: {ex.Message}");
             }
         }
+
+        Console.WriteLine($"\nЗагружено категорий: {loaded} из {categoryFiles.Length}");
+        if (errors > 0) Console.WriteLine($"Ошибок: {errors}");
+        Console.ReadKey();
+
         return categories;
     }
 
